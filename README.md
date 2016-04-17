@@ -8,19 +8,15 @@ survive hard disks' bad sectors, scratched CD/DVD backups, etc)
 INSTALL
 =======
 
-	./configure 
 	make 
 	make install
 
-...will copy binaries and scripts into your /usr/local/bin/ 
-directory. For reference, some additional docs (including this 
-README) will be copied inside a documentation directory: 
-/usr/local/share/doc/rsbep/. If you wish to change the prefix 
-from /usr/local/ to "/path/to/whatever", use...
+...will copy binaries and scripts into your /usr/bin/ 
+directory. If you wish to change the prefix 
+from /usr to "/path/to/whatever", use...
 
-	./configure --prefix=/path/to/whatever
 	make
-	make install
+	make install prefix=/path/to/whatever
 
 ...and remember to add /path/to/whatever/bin to your PATH.
 Read INSTALL for more details, if you wish.
@@ -30,10 +26,6 @@ DATA RECOVERY
 
 Here's an example of data recovery via the "freeze.sh" and 
 "melt.sh" scripts:
-
----------------------------------------------------------------
---------  Slideshow begins  -----------------------------------
----------------------------------------------------------------
 
     home:/var/tmp/recovery$ ls -la
     total 4108
@@ -72,9 +64,6 @@ Here's an example of data recovery via the "freeze.sh" and
     9440c7d2ff545de1ff340e7a81a53efb  data2
     9440c7d2ff545de1ff340e7a81a53efb  data3
 
----------------------------------------------------------------
---------- Slideshow ends  -------------------------------------
----------------------------------------------------------------
 
 FUSE-based filesystem using this
 ================================
