@@ -35,42 +35,42 @@ Here's an example of data recovery via the "freeze.sh" and
 --------  Slideshow begins  -----------------------------------
 ---------------------------------------------------------------
 
-home:/var/tmp/recovery$ ls -la
-total 4108
-drwxr-xr-x 2 ttsiod ttsiod    4096 2008-07-30 22:21 .
-drwxrwxrwt 5 root   root      4096 2008-07-30 22:21 ..
--rw-r--r-- 1 ttsiod ttsiod 4194304 2008-07-30 22:21 data
+    home:/var/tmp/recovery$ ls -la
+    total 4108
+    drwxr-xr-x 2 ttsiod ttsiod    4096 2008-07-30 22:21 .
+    drwxrwxrwt 5 root   root      4096 2008-07-30 22:21 ..
+    -rw-r--r-- 1 ttsiod ttsiod 4194304 2008-07-30 22:21 data
 
-home:/var/tmp/recovery$ freeze.sh data > data.shielded
-home:/var/tmp/recovery$ ls -la
-total 9204
-drwxr-xr-x 2 ttsiod ttsiod    4096 2008-07-30 22:21 .
-drwxrwxrwt 5 root   root      4096 2008-07-30 22:21 ..
--rw-r--r-- 1 ttsiod ttsiod 4194304 2008-07-30 22:21 data
--rw-r--r-- 1 ttsiod ttsiod 5202000 2008-07-30 22:21 data.shielded
+    home:/var/tmp/recovery$ freeze.sh data > data.shielded
+    home:/var/tmp/recovery$ ls -la
+    total 9204
+    drwxr-xr-x 2 ttsiod ttsiod    4096 2008-07-30 22:21 .
+    drwxrwxrwt 5 root   root      4096 2008-07-30 22:21 ..
+    -rw-r--r-- 1 ttsiod ttsiod 4194304 2008-07-30 22:21 data
+    -rw-r--r-- 1 ttsiod ttsiod 5202000 2008-07-30 22:21 data.shielded
 
-home:/var/tmp/recovery$ melt.sh data.shielded > data2
-home:/var/tmp/recovery$ md5sum data data2
-9440c7d2ff545de1ff340e7a81a53efb  data
-9440c7d2ff545de1ff340e7a81a53efb  data2
+    home:/var/tmp/recovery$ melt.sh data.shielded > data2
+    home:/var/tmp/recovery$ md5sum data data2
+    9440c7d2ff545de1ff340e7a81a53efb  data
+    9440c7d2ff545de1ff340e7a81a53efb  data2
 
-home:/var/tmp/recovery$ echo Will now create artificial corruption 
-home:/var/tmp/recovery$ echo of 127 times 512 which is 65024 bytes
+    home:/var/tmp/recovery$ echo Will now create artificial corruption 
+    home:/var/tmp/recovery$ echo of 127 times 512 which is 65024 bytes
 
-home:/var/tmp/recovery$ dd if=/dev/zero of=data.shielded bs=512 count=127 conv=notrunc
-127+0 records in
-127+0 records out
-65024 bytes (65 kB) copied, 0,00026734 seconds, 243 MB/s
+    home:/var/tmp/recovery$ dd if=/dev/zero of=data.shielded bs=512 count=127 conv=notrunc
+    127+0 records in
+    127+0 records out
+    65024 bytes (65 kB) copied, 0,00026734 seconds, 243 MB/s
 
-home:/var/tmp/recovery$ melt.sh data.shielded > data3
+    home:/var/tmp/recovery$ melt.sh data.shielded > data3
 
-rsbep: number of corrected failures   : 64764
-rsbep: number of uncorrectable blocks : 0
+    rsbep: number of corrected failures   : 64764
+    rsbep: number of uncorrectable blocks : 0
 
-home:/var/tmp/recovery$ md5sum data data2 data3
-9440c7d2ff545de1ff340e7a81a53efb  data
-9440c7d2ff545de1ff340e7a81a53efb  data2
-9440c7d2ff545de1ff340e7a81a53efb  data3
+    home:/var/tmp/recovery$ md5sum data data2 data3
+    9440c7d2ff545de1ff340e7a81a53efb  data
+    9440c7d2ff545de1ff340e7a81a53efb  data2
+    9440c7d2ff545de1ff340e7a81a53efb  data3
 
 ---------------------------------------------------------------
 --------- Slideshow ends  -------------------------------------
